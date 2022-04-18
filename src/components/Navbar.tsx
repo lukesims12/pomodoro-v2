@@ -6,7 +6,7 @@ const Navbar: FunctionComponent = () => {
     return (
         <AppBar position="static" sx={{ background: red[600]}}>
             <Toolbar>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Typography sx={{ flexGrow: 1, fontWeight: '700', fontSize: '1.1em', textTransform: 'uppercase', letterSpacing: '.15em' }}>
                     Pomodoro
                 </Typography>
             </Toolbar>

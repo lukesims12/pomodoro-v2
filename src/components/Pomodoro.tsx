@@ -1,5 +1,9 @@
-import { Button, Container, Typography } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import { FunctionComponent, useEffect, useState } from "react";
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
+import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { green, red } from "@mui/material/colors";
 
 const Pomodoro: FunctionComponent = () => {
     const [seconds, setSeconds] = useState(25 * 60);
@@ -16,23 +20,33 @@ const Pomodoro: FunctionComponent = () => {
 
     useEffect(() => {
         const int = setInterval(() => {
-            if (!paused) {
-                setSeconds(s => s - 1);
-            }
+            if (!paused) setSeconds(s => s - 1);
         }, 1000);
-        return () => {
-            clearInterval(int);
-        };
+        return () => { clearInterval(int) };
     }, [paused]);
 
     return (
         <Container>
             <div style={{display: 'flex', justifyContent: 'center'}}>
-                <div style={{fontSize: '12em'}}>{time}</div>
+                <div style={{fontSize: '12em', fontFamily: 'Roboto Slab', fontWeight: '500'}}>{time}</div>
             </div>
             <div style={{display: 'flex', justifyContent: 'center', gap: '1em'}}>
-                <div><Button onClick={paused ? startTimer : pauseTimer} variant="contained" color={paused ? "primary" : "error"}>{paused ? "Start" : "Pause"}</Button></div>
-                <div><Button onClick={resetTimer} variant="contained" color="primary">Reset</Button></div>
+                <Button 
+                    onClick={paused ? startTimer : pauseTimer} 
+                    endIcon={paused ? <PlayCircleOutlineIcon /> : <PauseCircleOutlineIcon />} 
+                    variant="contained" 
+                    sx={{'&:hover': {background: paused ? green[700] : red[500]}, background: paused ? green[800] : red[600]}}
+                >
+                    {paused ? "Start" : "Pause"}
+                </Button>
+                <Button 
+                    onClick={resetTimer} 
+                    variant="contained" 
+                    endIcon={<RestartAltIcon />}
+                    sx={{'&:hover': {background: red[500]}, background: red[600]}}
+                >
+                    Reset
+                </Button>
             </div>
         </Container>
     );
