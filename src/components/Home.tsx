@@ -8,7 +8,7 @@ const Home: FunctionComponent = () => {
         <>
             <Navbar />
             <Pomodoro />
-            <ToDoList />
+            {/* <ToDoList /> */}
         </>
     );
 }

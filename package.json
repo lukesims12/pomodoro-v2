@@ -13,6 +13,7 @@
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.6.2",
     "react": "^18.0.0",
+    "react-color-palette": "^6.2.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "6"
   },
