@@ -1,31 +1,30 @@
 import { AppBar, Toolbar, IconButton, Typography, Button, Popover } from "@mui/material";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, SetStateAction, useEffect, useState } from "react";
 import { red } from '@mui/material/colors';
 import PaletteIcon from '@mui/icons-material/Palette';
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
 
-const Navbar: FunctionComponent = () => {
-    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-    const [colour, setColour] = useColor("hex", red[600]);
+interface INavbarProps {
+    selectedColour: string,
+    handleColourChange: (selectedColour: string) => void
+}
 
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-  
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-  
+const Navbar: FunctionComponent<INavbarProps> = ({ selectedColour, handleColourChange }) => {
+    
+    const [colour, setColour] = useColor("hex", red[600]);
+    
+    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
     const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget);
+    const handleClose = () => setAnchorEl(null);
 
     useEffect(() => {
-        setColour(colour);
+        handleColourChange(colour.hex);
     }, [colour])
 
     return (
-        <AppBar position="static" sx={{ background: colour.hex}}>
+        <AppBar position="static" sx={{ background: selectedColour}}>
             <Toolbar>
                 <Typography sx={{ flexGrow: 1, fontWeight: '700', fontSize: '1.1em', textTransform: 'uppercase', letterSpacing: '.15em' }}>
                     Pomodoro
@@ -34,14 +33,10 @@ const Navbar: FunctionComponent = () => {
                     <PaletteIcon sx={{color: '#FFF'}} />
                 </IconButton>   
                 <Popover
-                    id={id}
                     open={open}
                     anchorEl={anchorEl}
                     onClose={handleClose}
-                    anchorOrigin={{
-                        vertical: 'bottom',
-                        horizontal: 'center',
-                    }}
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
                 >
                     <ColorPicker width={350} height={150} color={colour} onChange={setColour} hideHSV hideRGB dark />                
                 </Popover>         
