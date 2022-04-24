@@ -4,6 +4,7 @@ import { red } from '@mui/material/colors';
 import PaletteIcon from '@mui/icons-material/Palette';
 import { ColorPicker, useColor } from "react-color-palette";
 import "react-color-palette/lib/css/styles.css";
+import TimelapseIcon from '@mui/icons-material/Timelapse';
 
 interface INavbarProps {
     selectedColour: string,
@@ -26,8 +27,8 @@ const Navbar: FunctionComponent<INavbarProps> = ({ selectedColour, handleColourC
     return (
         <AppBar position="static" sx={{ background: selectedColour}}>
             <Toolbar>
-                <Typography sx={{ flexGrow: 1, fontWeight: '700', fontSize: '1.1em', textTransform: 'uppercase', letterSpacing: '.15em' }}>
-                    Pomodoro
+                <Typography sx={{ display: 'flex', gap: '.5em', flexGrow: 1, fontWeight: '700', fontSize: '1.1em', textTransform: 'uppercase', letterSpacing: '.15em' }}>
+                    <TimelapseIcon /> Pomodoro
                 </Typography>
                 <IconButton onClick={handleClick}>
                     <PaletteIcon sx={{color: '#FFF'}} />

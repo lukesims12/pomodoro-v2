@@ -11,11 +11,11 @@ const Home: FunctionComponent = () => {
     const handleColourChange = (selectedColour: string) => setSelectedColour(selectedColour);
 
     return(
-        <>
+        <div style={{background: '#EAEAEA', height: '100vh'}}>
             <Navbar selectedColour={selectedColour} handleColourChange={handleColourChange} />
             <Pomodoro colour={selectedColour} />
             {/* <ToDoList /> */}
-        </>
+        </div>
     );
 }
 

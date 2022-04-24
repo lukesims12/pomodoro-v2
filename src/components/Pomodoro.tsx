@@ -1,4 +1,4 @@
-import { Button, Container } from "@mui/material";
+import { Button, Container, LinearProgress } from "@mui/material";
 import { FunctionComponent, useEffect, useState } from "react";
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
@@ -13,7 +13,8 @@ interface IPomodoroProps {
 const Pomodoro: FunctionComponent<IPomodoroProps> = ({colour}) => {
 
     const [paused, setPaused] = useState(true);
-    const [[mins, secs], setTime] = useState([25, 0]);    
+    const [[mins, secs], setTime] = useState([25, 0]);   
+    const [progress, setProgress] = useState(0); 
     const time = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     
     const startTimer = () => setPaused(false);
@@ -40,7 +41,7 @@ const Pomodoro: FunctionComponent<IPomodoroProps> = ({colour}) => {
         const timerId = setInterval(() => {if (!paused) tick()}, 1000);
         return () => clearInterval(timerId);
     });
-
+    
     useEffect(() => {
         document.title = `${mins}m ${secs}s left!`;
         if (mins === 0 && secs <= 59 && secs >= 1) document.title = `${secs} seconds left!`;
@@ -50,7 +51,7 @@ const Pomodoro: FunctionComponent<IPomodoroProps> = ({colour}) => {
     return (
         <Container>
             <div style={{display: 'flex', justifyContent: 'center'}}>
-                <div style={{fontSize: '12em', fontFamily: 'Roboto Slab', fontWeight: '500', color: colour}}>{time}</div> 
+                <div style={{fontSize: '10em', fontFamily: 'Roboto Slab', fontWeight: '500', color: '#000' }}>{time}</div> 
             </div>
             <TimeSelection handleSetTime={handleSetTime} />
             <div style={{display: 'flex', justifyContent: 'center', gap: '1em'}}>
