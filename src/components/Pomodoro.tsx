@@ -6,11 +6,7 @@ import { green, grey, red } from "@mui/material/colors";
 import { FunctionComponent, useEffect, useState } from "react";
 import TimeSelection from "./TimeSelection";
 
-interface IPomodoroProps {
-    colour: string
-}
-
-const Pomodoro: FunctionComponent<IPomodoroProps> = ({colour}) => {
+const Pomodoro: FunctionComponent = () => {
 
     const [paused, setPaused] = useState(true);
     const [[mins, secs], setTime] = useState([25, 0]);   
