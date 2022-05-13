@@ -1,48 +1,15 @@
-import { AppBar, Toolbar, IconButton, Typography, Button, Popover } from "@mui/material";
-import { FunctionComponent, SetStateAction, useEffect, useState } from "react";
-import { red } from '@mui/material/colors';
-import PaletteIcon from '@mui/icons-material/Palette';
-import { ColorPicker, useColor } from "react-color-palette";
-import "react-color-palette/lib/css/styles.css";
 import TimelapseIcon from '@mui/icons-material/Timelapse';
+import { Typography } from "@mui/material";
+import { FunctionComponent } from "react";
 
-interface INavbarProps {
-    selectedColour: string,
-    handleColourChange: (selectedColour: string) => void
-}
-
-const Navbar: FunctionComponent<INavbarProps> = ({ selectedColour, handleColourChange }) => {
+const Navbar: FunctionComponent = () => {
     
-    const [colour, setColour] = useColor("hex", red[600]);
-    
-    const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-    const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget);
-    const handleClose = () => setAnchorEl(null);
-
-    useEffect(() => {
-        handleColourChange(colour.hex);
-    }, [colour])
-
     return (
-        <AppBar position="static" sx={{ background: selectedColour}}>
-            <Toolbar>
-                <Typography sx={{ display: 'flex', gap: '.5em', flexGrow: 1, fontWeight: '700', fontSize: '1.1em', textTransform: 'uppercase', letterSpacing: '.15em' }}>
-                    <TimelapseIcon /> Pomodoro
-                </Typography>
-                <IconButton onClick={handleClick}>
-                    <PaletteIcon sx={{color: '#FFF'}} />
-                </IconButton>   
-                <Popover
-                    open={open}
-                    anchorEl={anchorEl}
-                    onClose={handleClose}
-                    anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-                >
-                    <ColorPicker width={350} height={150} color={colour} onChange={setColour} hideHSV hideRGB dark />                
-                </Popover>         
-            </Toolbar>
-        </AppBar>
+        <nav style={{ display: 'flex', flexDirection: 'row', padding: '1.25em'}}>
+            <Typography sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '.5em', flexGrow: 1, fontWeight: '700', fontSize: '1.25em', textTransform: 'uppercase', letterSpacing: '.15em', color: '#FFF' }}>
+                <TimelapseIcon /> Pomotimer
+            </Typography>
+        </nav>
     );
 }
 

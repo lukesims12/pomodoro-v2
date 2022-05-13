@@ -1,9 +1,9 @@
-import { Button, Container, LinearProgress } from "@mui/material";
-import { FunctionComponent, useEffect, useState } from "react";
-import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
+import { Button, Container } from "@mui/material";
 import { green, grey, red } from "@mui/material/colors";
+import { FunctionComponent, useEffect, useState } from "react";
 import TimeSelection from "./TimeSelection";
 
 interface IPomodoroProps {
@@ -14,7 +14,6 @@ const Pomodoro: FunctionComponent<IPomodoroProps> = ({colour}) => {
 
     const [paused, setPaused] = useState(true);
     const [[mins, secs], setTime] = useState([25, 0]);   
-    const [progress, setProgress] = useState(0); 
     const time = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
     
     const startTimer = () => setPaused(false);
@@ -49,12 +48,17 @@ const Pomodoro: FunctionComponent<IPomodoroProps> = ({colour}) => {
     }, [startTimer])
 
     return (
-        <Container>
-            <div style={{display: 'flex', justifyContent: 'center'}}>
-                <div style={{fontSize: '10em', fontFamily: 'Roboto Slab', fontWeight: '500', color: '#000' }}>{time}</div> 
+        <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1em', margin: '1em 0'}}>
+                <Button variant='contained' sx={{'&:hover': {background: grey[800]}, background: grey[900]}}>Pomodoro</Button>
+                <Button variant='contained' sx={{'&:hover': {background: grey[800]}, background: grey[900]}}>Short Break</Button>
+                <Button variant='contained' sx={{'&:hover': {background: grey[800]}, background: grey[900]}}>Long Break</Button>
             </div>
-            <TimeSelection handleSetTime={handleSetTime} />
-            <div style={{display: 'flex', justifyContent: 'center', gap: '1em'}}>
+            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
+                <div style={{fontSize: '10em', fontFamily: 'Roboto Slab', fontWeight: '500', color: '#FFF', padding: '.25em', backgroundColor: 'rgba(0,0,0,.2)' }}>{time}</div> 
+            </div>
+                <TimeSelection handleSetTime={handleSetTime} />
+            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1em'}}>
                 <Button 
                     onClick={paused ? startTimer : pauseTimer} 
                     endIcon={paused ? <PlayCircleOutlineIcon /> : <PauseCircleOutlineIcon />} 

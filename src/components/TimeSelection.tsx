@@ -14,7 +14,7 @@ const TimeSelection: FunctionComponent<TimeSelectionProps> = ({handleSetTime}) =
             onClick={() => handleSetTime(15,0)} 
             variant="contained" 
             endIcon={<AvTimerIcon />}
-            sx={{'&:hover': {background: grey[900]}, background: grey[900]}}
+            sx={{'&:hover': {background: grey[800]}, background: grey[900]}}
         >
             15 mins
         </Button>
@@ -22,7 +22,7 @@ const TimeSelection: FunctionComponent<TimeSelectionProps> = ({handleSetTime}) =
             onClick={() => handleSetTime(10,0)} 
             variant="contained" 
             endIcon={<AvTimerIcon />}
-            sx={{'&:hover': {background: grey[900]}, background: grey[900]}}
+            sx={{'&:hover': {background: grey[800]}, background: grey[900]}}
         >
             10 mins
         </Button>
@@ -30,7 +30,7 @@ const TimeSelection: FunctionComponent<TimeSelectionProps> = ({handleSetTime}) =
             onClick={() => handleSetTime(5,0)} 
             variant="contained" 
             endIcon={<AvTimerIcon />}
-            sx={{'&:hover': {background: grey[900]}, background: grey[900]}}
+            sx={{'&:hover': {background: grey[800]}, background: grey[900]}}
         >
             5 mins
         </Button>
