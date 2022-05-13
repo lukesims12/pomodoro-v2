@@ -44,10 +44,10 @@ const Pomodoro: FunctionComponent = () => {
     }, [startTimer])
 
     return (
-        <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', marginBottom: '1em'}}>
-                <div style={{fontSize: '10em', fontFamily: 'Roboto Slab', fontWeight: '500', color: '#FFF', padding: '.25em', backgroundColor: 'rgba(0,0,0,.2)' }}>
-                    {time}
+        <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '50vw'}}>
+            <div style={{}}>
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', marginBottom: '.25em', fontSize: '10em', fontFamily: 'Roboto Slab', fontWeight: '500', color: '#FFF', padding: '.25em', backgroundColor: 'rgba(0,0,0,.2)' }}>
+                    <div>{time}</div>
                 </div> 
             </div>
             <TimeSelection handleSetTime={handleSetTime} />
