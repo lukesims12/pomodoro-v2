@@ -10,21 +10,16 @@ import { ColorPicker, useColor } from "react-color-palette";
 
 const Home: FunctionComponent = () => {
 
-    const [selectedColour, setSelectedColour] = useState<string>(red[600]);
-
-    const handleColourChange = (selectedColour: string) => setSelectedColour(selectedColour);
     const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null);
-    
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => setAnchorEl(event.currentTarget);
     const handleClose = () => setAnchorEl(null);
     const [colour, setColour] = useColor("hex", red[500]);
-    
 
     return (
-        <div style={{ background: selectedColour, height: '100vh' }}>
+        <div style={{ background: colour.hex, height: '100vh' }}>
             <Navbar />
-            <Pomodoro colour={selectedColour} />
+            <Pomodoro colour={colour.hex} />
             {/* <ToDoList /> */}
             <Fab variant="extended" onClick={handleClick} sx={{'&:hover': {background: grey[900]}, backgroundColor: 'rgba(0,0,0,.2)', position: 'absolute', bottom: '2em', right: '2em', color: '#FFF', display: 'flex', alignItems: 'center'}}>
                 <PaletteIcon sx={{color: '#FFF'}} />&emsp;Colour Picker
