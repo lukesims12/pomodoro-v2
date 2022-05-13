@@ -24,17 +24,6 @@ const ColourSelector: FunctionComponent<ColourSelectorProps> = ({handleColourCha
 
     return ( 
         <>
-            <IconButton onClick={handleClick}>
-                <PaletteIcon sx={{color: '#FFF'}} />
-            </IconButton>   
-            <Popover
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
-            >
-                <ColorPicker width={350} height={150} color={colour} onChange={setColour} hideHSV hideRGB dark />                
-            </Popover>         
 
         </>
     );

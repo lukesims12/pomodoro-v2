@@ -9,30 +9,27 @@ interface TimeSelectionProps {
  
 const TimeSelection: FunctionComponent<TimeSelectionProps> = ({handleSetTime}) => {
     return ( 
-        <div style={{display: 'flex', justifyContent: 'center', gap: '1em', margin: '1em 0'}}>
+        <div style={{display: 'flex', justifyContent: 'center', gap: '1em'}}>
         <Button 
-            onClick={() => handleSetTime(15,0)} 
+            onClick={() => handleSetTime(25,0)} 
             variant="contained" 
-            endIcon={<AvTimerIcon />}
             sx={{'&:hover': {background: grey[800]}, background: grey[900]}}
         >
-            15 mins
-        </Button>
-        <Button 
-            onClick={() => handleSetTime(10,0)} 
-            variant="contained" 
-            endIcon={<AvTimerIcon />}
-            sx={{'&:hover': {background: grey[800]}, background: grey[900]}}
-        >
-            10 mins
+            Pomodoro [25M]
         </Button>
         <Button 
             onClick={() => handleSetTime(5,0)} 
             variant="contained" 
-            endIcon={<AvTimerIcon />}
             sx={{'&:hover': {background: grey[800]}, background: grey[900]}}
         >
-            5 mins
+            Short Break [5M]
+        </Button>
+        <Button 
+            onClick={() => handleSetTime(15,0)} 
+            variant="contained" 
+            sx={{'&:hover': {background: grey[800]}, background: grey[900]}}
+        >
+            Long Break [15M]
         </Button>
     </div>
 );

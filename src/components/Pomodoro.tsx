@@ -49,16 +49,13 @@ const Pomodoro: FunctionComponent<IPomodoroProps> = ({colour}) => {
 
     return (
         <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1em', margin: '1em 0'}}>
-                <Button variant='contained' sx={{'&:hover': {background: grey[800]}, background: grey[900]}}>Pomodoro</Button>
-                <Button variant='contained' sx={{'&:hover': {background: grey[800]}, background: grey[900]}}>Short Break</Button>
-                <Button variant='contained' sx={{'&:hover': {background: grey[800]}, background: grey[900]}}>Long Break</Button>
+            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', marginBottom: '1em'}}>
+                <div style={{fontSize: '10em', fontFamily: 'Roboto Slab', fontWeight: '500', color: '#FFF', padding: '.25em', backgroundColor: 'rgba(0,0,0,.2)' }}>
+                    {time}
+                </div> 
             </div>
-            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center'}}>
-                <div style={{fontSize: '10em', fontFamily: 'Roboto Slab', fontWeight: '500', color: '#FFF', padding: '.25em', backgroundColor: 'rgba(0,0,0,.2)' }}>{time}</div> 
-            </div>
-                <TimeSelection handleSetTime={handleSetTime} />
-            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1em'}}>
+            <TimeSelection handleSetTime={handleSetTime} />
+            <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '1em', marginTop: '1em'}}>
                 <Button 
                     onClick={paused ? startTimer : pauseTimer} 
                     endIcon={paused ? <PlayCircleOutlineIcon /> : <PauseCircleOutlineIcon />} 
@@ -71,7 +68,7 @@ const Pomodoro: FunctionComponent<IPomodoroProps> = ({colour}) => {
                     onClick={resetTimer} 
                     variant="contained" 
                     endIcon={<RestartAltIcon />}
-                    sx={{'&:hover': {background: red[500]}, background: red[600]}}
+                    sx={{'&:hover': {background: red[500]}, background: red[700]}}
                 >
                     Reset
                 </Button>
