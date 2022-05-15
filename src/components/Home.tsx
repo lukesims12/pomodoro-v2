@@ -5,6 +5,7 @@ import "react-color-palette/lib/css/styles.css";
 import Navbar from "./Navbar";
 import Pomodoro from "./Pomodoro";
 import Settings from "./Settings";
+import ToDoList from "./ToDoList";
 
 const Home: FunctionComponent = () => {
 
@@ -14,7 +15,7 @@ const Home: FunctionComponent = () => {
         <div style={{ background: colour.hex, height: '100vh' }}>
             <Navbar />
             <Pomodoro />
-            {/* <ToDoList /> */}
+            <ToDoList />
             <Settings colour={colour} setColour={setColour} />
         </div>
     );
