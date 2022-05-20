@@ -1,8 +1,8 @@
-import { Badge, Button, Grid, Paper, TextField } from "@mui/material";
-import { grey } from "@mui/material/colors";
-import { FunctionComponent, ReactNode, useEffect, useState } from "react";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import { Badge, Button, Paper, TextField } from "@mui/material";
+import { grey } from "@mui/material/colors";
+import { FunctionComponent, useEffect, useState } from "react";
 import { IToDo } from "../interfaces/IToDo";
 
 const ToDoList: FunctionComponent = () => {
@@ -21,8 +21,8 @@ const ToDoList: FunctionComponent = () => {
     }, [todos])
 
     return (
-        <Grid container sx={{ width: '100vw', textAlign: 'center', margin: '1em' }}>
-            <Grid item xs={6}>
+        <div style={{ width: '100vw', marginTop: '1em', display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '4em' }}>
+            <div>
                 <div style={{color: '#FFF'}}>Tasks: {todos.length}</div>
                 <Badge badgeContent={"WIP"} sx={{
                     "& .MuiBadge-badge": {
@@ -36,8 +36,8 @@ const ToDoList: FunctionComponent = () => {
                         <Button onClick={addToDo} variant='contained' sx={{ '&:hover': { background: grey[800] }, background: grey[900] }}>ADD</Button>
                     </Paper>
                 </Badge>
-            </Grid>
-            <Grid item xs={6}>
+            </div>
+            <div>
                 <div style={{ color: '#FFF', borderRadius: '.25em', width: '30em' }}>
                     {todos.length === 0 &&
                         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1em', padding: '.5em .75em', justifyContent: 'space-between', backgroundColor: 'rgba(0,0,0,.2)', height: '3em', marginTop: '1em' }}>
@@ -45,13 +45,13 @@ const ToDoList: FunctionComponent = () => {
                         </div>
                     }
                     <div>{todos && todos?.map((e: IToDo) => (
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1em', padding: '.5em .75em', justifyContent: 'space-between', backgroundColor: 'rgba(0,0,0,.2)', height: '3em', marginTop: '1em' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1em', padding: '.5em .75em', justifyContent: 'space-between', backgroundColor: 'rgba(0,0,0,.2)', height: '3em', marginTop: '1em'}}>
                             {e.task} {e.isCompleted ? <CheckCircleIcon /> : <CheckCircleOutlineIcon />}
                         </div>
                     ))}</div>
                 </div>
-            </Grid>
-        </Grid>
+            </div>
+        </div>
     );
 }
 
