@@ -1,9 +1,8 @@
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import { Badge, Button, Paper, TextField } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { FunctionComponent, useEffect, useState } from "react";
 import { IToDo } from "../interfaces/IToDo";
+import ToDoItem from "./ToDoItem";
 
 const ToDoList: FunctionComponent = () => {
 
@@ -12,18 +11,16 @@ const ToDoList: FunctionComponent = () => {
 
     const addToDo = () => setTodos((todos) => [...todos, { task: task, isCompleted: false }]);
 
-    // const handleCompleteTask = () => {
-    //     setTodos((todos) => [{task: task, isCompleted: true}]);
-    // }
-
-    useEffect(() => {
-        console.log(todos);
-    }, [todos])
+    const completeToDo = (index: number) => {
+        const newTodos = [...todos];
+        newTodos[index].isCompleted = true;
+        setTodos(newTodos);
+    };
 
     return (
         <div style={{ width: '100vw', marginTop: '1em', display: 'flex', flexDirection: 'row', justifyContent: 'center', gap: '4em' }}>
             <div>
-                <div style={{color: '#FFF'}}>Tasks: {todos.length}</div>
+                <div style={{ color: '#FFF' }}>Tasks: {todos.length}</div>
                 <Badge badgeContent={"WIP"} sx={{
                     "& .MuiBadge-badge": {
                         color: "#FFF",
@@ -44,10 +41,8 @@ const ToDoList: FunctionComponent = () => {
                             Tasks will appear here...
                         </div>
                     }
-                    <div>{todos && todos?.map((e: IToDo) => (
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '1em', padding: '.5em .75em', justifyContent: 'space-between', backgroundColor: 'rgba(0,0,0,.2)', height: '3em', marginTop: '1em'}}>
-                            {e.task} {e.isCompleted ? <CheckCircleIcon /> : <CheckCircleOutlineIcon />}
-                        </div>
+                    <div style={{height: '50vh', overflowY: todos.length >= 8 ? 'scroll' : 'hidden'}}>{todos && todos?.map((e: IToDo, index: number) => (
+                        <ToDoItem key={index} index={index} completeToDo={completeToDo} todo={e} />
                     ))}</div>
                 </div>
             </div>

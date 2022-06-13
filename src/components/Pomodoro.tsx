@@ -47,7 +47,7 @@ const Pomodoro: FunctionComponent = () => {
         <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '50vw'}}>
             <div>
                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', marginBottom: '1em', fontFamily: 'Roboto Slab', fontWeight: '500', color: '#FFF', padding: '.25em', backgroundColor: 'rgba(0,0,0,.2)', borderRadius: '.25em' }}>
-                    <div style={{fontSize: '9em'}}>{time}</div>
+                    <div style={{fontSize:  '9em'}}>{time}</div>
                 </div> 
             </div>
             <TimeSelection handleSetTime={handleSetTime} />

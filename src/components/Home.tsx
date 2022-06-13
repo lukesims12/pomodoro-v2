@@ -1,3 +1,4 @@
+import { Container } from "@mui/material";
 import { red } from "@mui/material/colors";
 import { FunctionComponent } from "react";
 import { useColor } from "react-color-palette";
@@ -12,12 +13,12 @@ const Home: FunctionComponent = () => {
     const [colour, setColour] = useColor("hex", red[500]);
 
     return (
-        <div style={{ background: colour.hex, height: '100vh' }}>
+        <Container maxWidth={false} sx={{ background: colour.hex, height: '100vh' }}>
             <Navbar />
             <Pomodoro />
             <ToDoList />
             <Settings colour={colour} setColour={setColour} />
-        </div>
+        </Container>
     );
 }
 
