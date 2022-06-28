@@ -1,0 +1,9 @@
+.btn-time-selection {
+    font-size: 1em;
+}
+
+@media only screen and (max-width: 600px) {
+    .btn-time-selection {
+        font-size: .8em;
+    }
+}

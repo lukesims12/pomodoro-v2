@@ -2,9 +2,10 @@ import PauseCircleOutlineIcon from '@mui/icons-material/PauseCircleOutline';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import RestartAltIcon from '@mui/icons-material/RestartAlt';
 import { Button, Container } from "@mui/material";
-import { green, grey, red } from "@mui/material/colors";
+import { green, red } from "@mui/material/colors";
 import { FunctionComponent, useEffect, useState } from "react";
 import TimeSelection from "./TimeSelection";
+import '../assets/css/Pomodoro.css';
 
 const Pomodoro: FunctionComponent = () => {
 
@@ -46,8 +47,8 @@ const Pomodoro: FunctionComponent = () => {
     return (
         <Container sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', width: '50vw'}}>
             <div>
-                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', marginBottom: '1em', fontFamily: 'Roboto Slab', fontWeight: '500', color: '#FFF', padding: '.25em', backgroundColor: 'rgba(0,0,0,.2)', borderRadius: '.25em' }}>
-                    <div style={{fontSize:  '9em'}}>{time}</div>
+                <div className="time-outer">
+                    <div className="time">{time}</div>
                 </div> 
             </div>
             <TimeSelection handleSetTime={handleSetTime} />
